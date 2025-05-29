@@ -11,6 +11,7 @@ db.sqlite3
 media/
 *.secret
 
+
 # Virtual environments
 env/
 venv/
@@ -21,6 +22,9 @@ venv/
 # React
 frontend/node_modules/
 frontend/build/
+
+# Ignore uploaded records
+backend/records/
 
 # macOS
 .DS_Store
