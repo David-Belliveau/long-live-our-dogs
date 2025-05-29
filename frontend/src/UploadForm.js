@@ -5,7 +5,7 @@ function UploadForm() {
   const [fileName, setFileName] = useState('');
   const fileInputRef = useRef(null);
 
-  // ✅ Prevent browser from hijacking drag/drop outside the dropzone
+  // Prevent browser from hijacking drag/drop outside the dropzone
   useEffect(() => {
     const handleWindowDragOver = (e) => e.preventDefault();
     const handleWindowDrop = (e) => e.preventDefault();
@@ -19,11 +19,36 @@ function UploadForm() {
     };
   }, []);
 
+  // Upload file to backend
+  const uploadToBackend = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await fetch('http://localhost:8000/api/uploads/', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('✅ Upload success:', data);
+      } else {
+        console.error('❌ Upload failed:', data);
+      }
+    } catch (error) {
+      console.error('❌ Upload error:', error);
+    }
+  };
+
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
       setFileName(file.name);
       console.log('Selected file:', file);
+      uploadToBackend(file); // Upload after selecting
     }
   };
 
@@ -35,6 +60,7 @@ function UploadForm() {
     if (file) {
       setFileName(file.name);
       console.log('Dropped file:', file);
+      uploadToBackend(file); // Upload after dropping
     }
   };
 
@@ -63,7 +89,7 @@ function UploadForm() {
     >
       <p>Drag and drop a PDF here, or click to select one.</p>
 
-      {/* ✅ Show uploaded file name */}
+      {/* Show uploaded file name */}
       {fileName && <p className="file-name">Selected: {fileName}</p>}
 
       <input
