@@ -1,0 +1,32 @@
+.upload-dropzone {
+  border: 2px dashed var(--blue-accent);
+  background-color: #f6f9f8;
+  padding: 1.5rem;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.upload-dropzone.dragging {
+  border-color: var(--green-accent);
+  background-color: #eef7f3;
+}
+
+.upload-input {
+  display: none;
+}
+
+.upload-dropzone p {
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.file-name {
+  margin-top: 1rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
