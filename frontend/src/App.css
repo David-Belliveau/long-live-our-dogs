@@ -1,19 +1,17 @@
-/* === COLOR SYSTEM (Inspired by Reference Screenshot) === */
+/* === COLOR SYSTEM === */
 :root {
-  --bg-page: #ffffff;           /* Clean white background */
-  --text-main: #222222;         /* Soft black for text */
-  --nav-bg: #ffffff;            /* Nav same as background */
-  --nav-text: #222222;          /* Nav link text */
-  --nav-hover: #c54b4b;         /* Red/pink from "GIFT GUIDE" */
-  --border-light: #eaeaea;      /* Thin subtle border */
-
-  /* Accent palette from images (green, blue, tan) */
+  --bg-page: #ffffff;
+  --text-main: #222222;
+  --nav-bg: #ffffff;
+  --nav-text: #222222;
+  --nav-hover: #c54b4b;
+  --border-light: #eaeaea;
   --green-accent: #5b7553;
   --blue-accent: #8faabf;
   --tan-accent: #e3d8c1;
 }
 
-/* === GLOBAL STYLES === */
+/* === GLOBAL === */
 body {
   margin: 0;
   font-family: 'Helvetica Neue', sans-serif;
@@ -33,7 +31,6 @@ a:hover {
 
 .App {
   text-align: center;
-  padding: 2rem;
 }
 
 /* === NAVBAR === */
@@ -60,45 +57,130 @@ a:hover {
 .logo span {
   font-size: 1.1rem;
   font-weight: 500;
-  color: var(--nav-text);
 }
 
 .nav-links a {
   margin-left: 1.5rem;
   font-weight: 500;
-  color: var(--nav-text);
 }
 
-.nav-links a:hover {
-  color: var(--nav-hover);
+/* === CONTAINER (reusable) === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
 }
 
-/* === HERO SECTION === */
+/* === HERO === */
+.hero-bg {
+  background-color: #DDE4DC;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+}
+
 .hero {
-  margin-top: 4rem;
-  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+.hero-text {
+  flex: 1 1 500px;
+  padding-right: 2rem;
+}
+
+.hero-text h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
   font-weight: 600;
-  color: var(--text-main);
 }
 
 .subtitle {
   font-size: 1.25rem;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
   max-width: 600px;
-  margin: 0 auto;
+}
+
+.cta-buttons a {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  margin-right: 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.cta-primary {
+  background-color: var(--nav-hover);
+  color: white;
+}
+
+.cta-secondary {
+  background-color: transparent;
+  border: 1px solid var(--nav-hover);
+  color: var(--nav-hover);
+}
+
+.cta-primary:hover,
+.cta-secondary:hover {
+  opacity: 0.9;
+}
+
+.hero-image {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* === EXPLAINER === */
+.explainer-bg {
+  background-color: #f5f9f7;
+  border-top: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.explainer-text {
+  max-width: 700px;
+  text-align: left;
+}
+
+.explainer-text h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.explainer-text p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.explainer-text ul {
+  /* list-style: none;       removes default bullets */
+  /* padding: 0; */
+  margin: 0;
+  margin-top: 1rem;       /* optional: spacing above the list */
+}
+
+.explainer-text li {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
   line-height: 1.6;
   color: var(--text-main);
 }
 
 
-/* === CALL TO ACTION SECTION === */
-
+/* === CALL TO ACTION === */
 .cta {
-  background-color: #f1f5f3; /* very light green tint */
+  background-color: #f1f5f3;
   padding: 3rem 2rem;
   margin-top: 4rem;
   border-radius: 12px;
@@ -112,13 +194,11 @@ a:hover {
 
 .cta h2 {
   font-size: 1.75rem;
-  color: var(--text-main);
   margin-bottom: 1rem;
 }
 
 .cta p {
   font-size: 1.15rem;
-  color: var(--text-main);
   line-height: 1.6;
   font-weight: 500;
   margin-top: 1.5rem;

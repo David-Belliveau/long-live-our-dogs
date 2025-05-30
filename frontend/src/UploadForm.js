@@ -25,7 +25,7 @@ function UploadForm() {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:8000/api/uploads/', {
+      const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/uploads/`, {
         method: 'POST',
         body: formData,
       });
@@ -98,6 +98,7 @@ function UploadForm() {
         onChange={handleFileChange}
         className="upload-input"
         ref={fileInputRef}
+        onClick={(e) => e.stopPropagation()}
       />
     </div>
   );
