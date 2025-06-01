@@ -76,9 +76,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    # Add your Vercel frontend URL here when you get it
-    # "https://your-app.vercel.app",
+    "https://your-vercel-app.vercel.app",  # Vercel
+    "https://www.longliveourdogs.org",
+    "https://longliveourdogs.org",
 ]
+
+CORS_ALLOW_CREDENTIALS = True
 
 # Database Configuration - This is the smart part!
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
