@@ -47,20 +47,17 @@ function App() {
       <section className="explainer-bg">
         <div className="container">
           <div className="explainer-text">
-            <h2>Why Upload?</h2>
+            {/* <h2>Why Upload?</h2> */}
+            <h2>We’re building the largest open dataset for canine health in the world.</h2>
             <p>
-              {/* Dog research is drastically underfunded  almost no access to real-world data. 
-               */}
-              {/* Countless dog illnesses could be treated better */}
-              {/* Vets and researchers need real records to improve how we treat serious illness in dogs. <br /> */}
-              The biggest barrier to better treatment for dogs is lack of data. Your dog's records will help researchers save lives:
-              {/* Your dog’s story can help — securely, anonymously, and never for profit. */}
+              Your uploads help build an open, anonymized dataset for researchers to improve care for the dogs we love. With a few important promises:
             </p>
-            {/* <p>Your dog's records could help researchers save lives — and we keep it ethical:</p> */}
+            {/* <p>
+              The biggest barrier to better treatment for dogs is lack of data. Your dog's records will help researchers save lives:
+            </p> */}
               <ul>
                 <li>🚫 Never shared for profit or marketing</li>
                 <li>🔒 All data anonymized (no names, no personal info)</li>
-                {/* <li>🚫 Never shared for profit or marketing</li> */}
                 <li>🐾 <b>Used only to improve care for dogs</b></li>
               </ul>
             
