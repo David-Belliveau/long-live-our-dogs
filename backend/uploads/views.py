@@ -11,9 +11,20 @@ def get_csrf_token(request):
     """
     Endpoint for frontend to get CSRF token
     """
-    return JsonResponse({'csrfToken': get_token(request)})
+    token = get_token(request)
+    response = JsonResponse({'csrfToken': token})
+    
+    # Force set the CSRF cookie for cross-origin requests
+    response.set_cookie(
+        'csrftoken',
+        token,
+        secure=True,
+        samesite='None',
+        httponly=False,
+        domain=None
+    )
+    return response
 
-# @csrf_exempt
 def upload_file(request):
     """
     Secure file upload endpoint with CSRF protection
