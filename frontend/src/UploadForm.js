@@ -3,8 +3,10 @@ import React, { useState, useRef, useEffect } from 'react';
 function UploadForm() {
   const [dragging, setDragging] = useState(false);
   const [fileName, setFileName] = useState('');
+  const [selectedFile, setSelectedFile] = useState(null); // Store the file
   const [csrfToken, setCsrfToken] = useState('');
   const [loading, setLoading] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState(''); // Success/error message
   const fileInputRef = useRef(null);
 
   // Get CSRF token when component mounts
@@ -39,14 +41,16 @@ function UploadForm() {
     };
   }, []);
 
-  // Upload file to backend with CSRF protection
+  // Upload file to backend
   const uploadToBackend = async (file) => {
     if (!csrfToken) {
       console.error('❌ No CSRF token available');
+      setUploadStatus('Error: No CSRF token available');
       return;
     }
 
     setLoading(true);
+    setUploadStatus('');
     const formData = new FormData();
     formData.append('file', file);
 
@@ -54,9 +58,9 @@ function UploadForm() {
       const response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/uploads/`, {
         method: 'POST',
         headers: {
-          'X-CSRFToken': csrfToken, // Include CSRF token in headers
+          'X-CSRFToken': csrfToken,
         },
-        credentials: 'include', // Include cookies for CSRF
+        credentials: 'include',
         body: formData,
       });
 
@@ -64,11 +68,20 @@ function UploadForm() {
 
       if (response.ok) {
         console.log('✅ Upload success:', data);
+        setUploadStatus('✅ File uploaded successfully!');
+        // Reset form after successful upload
+        setSelectedFile(null);
+        setFileName('');
+        if (fileInputRef.current) {
+          fileInputRef.current.value = '';
+        }
       } else {
         console.error('❌ Upload failed:', data);
+        setUploadStatus('❌ Upload failed. Please try again.');
       }
     } catch (error) {
       console.error('❌ Upload error:', error);
+      setUploadStatus('❌ Upload error. Please check your connection.');
     } finally {
       setLoading(false);
     }
@@ -78,8 +91,9 @@ function UploadForm() {
     const file = event.target.files[0];
     if (file) {
       setFileName(file.name);
+      setSelectedFile(file); // Store file instead of uploading immediately
+      setUploadStatus(''); // Clear any previous status
       console.log('Selected file:', file);
-      uploadToBackend(file); // Upload after selecting
     }
   };
 
@@ -90,8 +104,15 @@ function UploadForm() {
     const file = event.dataTransfer.files[0];
     if (file) {
       setFileName(file.name);
+      setSelectedFile(file); // Store file instead of uploading immediately
+      setUploadStatus(''); // Clear any previous status
       console.log('Dropped file:', file);
-      uploadToBackend(file); // Upload after dropping
+    }
+  };
+
+  const handleSubmit = () => {
+    if (selectedFile) {
+      uploadToBackend(selectedFile);
     }
   };
 
@@ -111,32 +132,53 @@ function UploadForm() {
   };
 
   return (
-    <div
-      className={`upload-dropzone ${dragging ? 'dragging' : ''} ${loading ? 'uploading' : ''}`}
-      onClick={handleClick}
-      onDrop={handleDrop}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-    >
-      <p>
-        {loading 
-          ? 'Uploading...' 
-          : 'Drag and drop a PDF here, or click to select one.'
-        }
-      </p>
+    <div className="upload-form-container">
+      <div
+        className={`upload-dropzone ${dragging ? 'dragging' : ''} ${loading ? 'uploading' : ''}`}
+        onClick={handleClick}
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+      >
+        <p>
+          {loading 
+            ? 'Uploading...' 
+            : 'Drag and drop a PDF here, or click to select one.'
+          }
+        </p>
 
-      {/* Show uploaded file name */}
-      {fileName && <p className="file-name">Selected: {fileName}</p>}
+        {/* File name display removed - browser shows it natively */}
 
-      <input
-        type="file"
-        accept=".pdf"
-        onChange={handleFileChange}
-        className="upload-input"
-        ref={fileInputRef}
-        onClick={(e) => e.stopPropagation()}
-        disabled={loading}
-      />
+        <input
+          type="file"
+          accept=".pdf"
+          onChange={handleFileChange}
+          className="upload-input"
+          ref={fileInputRef}
+          onClick={(e) => e.stopPropagation()}
+          disabled={loading}
+        />
+      </div>
+
+      {/* Submit Button with spacing */}
+      {selectedFile && !loading && (
+        <div style={{ marginTop: '16px' }}>
+          <button 
+            onClick={handleSubmit}
+            className="submit-button"
+            disabled={loading}
+          >
+            Upload File
+          </button>
+        </div>
+      )}
+
+      {/* Upload Status Message */}
+      {uploadStatus && (
+        <p className={`upload-status ${uploadStatus.includes('✅') ? 'success' : 'error'}`}>
+          {uploadStatus}
+        </p>
+      )}
     </div>
   );
 }

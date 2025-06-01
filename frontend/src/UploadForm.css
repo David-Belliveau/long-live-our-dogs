@@ -15,9 +15,16 @@
   background-color: #eef7f3;
 }
 
-.upload-input {
-  display: none;
-}
+/* .upload-input {
+  display: none !important;
+} */
+/* .upload-input {
+  display: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+} */
 
 .upload-dropzone p {
   margin: 0.75rem 0;
