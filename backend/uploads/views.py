@@ -21,7 +21,6 @@ def get_csrf_token(request):
         secure=True,
         samesite='None',
         httponly=False,
-        domain=None
     )
     return response
 
