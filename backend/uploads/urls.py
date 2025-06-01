@@ -1,13 +1,7 @@
-# from django.urls import path
-# from .views import upload_file
-
-# urlpatterns = [
-#     path('upload/', upload_file, name='upload_file'),
-# ]
-
 from django.urls import path
-from .views import upload_file
+from . import views
 
 urlpatterns = [
-    path('', upload_file, name='upload_file'),
+    path('csrf/', views.get_csrf_token, name='csrf_token'),
+    path('uploads/', views.upload_file, name='upload_file'),
 ]
