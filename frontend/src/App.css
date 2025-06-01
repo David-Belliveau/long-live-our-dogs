@@ -12,6 +12,11 @@
 }
 
 /* === GLOBAL === */
+html {
+  scroll-behavior: smooth;
+  /* scroll-padding-top: 80px; */
+}
+
 body {
   margin: 0;
   font-family: 'Helvetica Neue', sans-serif;
@@ -140,6 +145,10 @@ a:hover {
 }
 
 /* === EXPLAINER === */
+#explainer {
+  scroll-margin-top: 200px;
+}
+
 .explainer-bg {
   background-color: #f5f9f7;
   border-top: 1px solid #eaeaea;
