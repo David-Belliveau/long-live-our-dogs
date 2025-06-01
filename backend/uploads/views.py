@@ -13,7 +13,7 @@ def get_csrf_token(request):
     """
     return JsonResponse({'csrfToken': get_token(request)})
 
-@csrf_exempt
+# @csrf_exempt
 def upload_file(request):
     """
     Secure file upload endpoint with CSRF protection
