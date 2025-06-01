@@ -33,7 +33,7 @@ function App() {
             </p>
             <div className="cta-buttons">
               <a href="#upload" className="cta-primary">Upload Now</a>
-              <a href="#about" className="cta-secondary">Learn More</a>
+              <a href="#explainer" className="cta-secondary">Learn More</a>
             </div>
           </div>
 
@@ -46,7 +46,7 @@ function App() {
       {/* EXPLAINER SECTION */}
       <section className="explainer-bg">
         <div className="container">
-          <div className="explainer-text">
+          <div className="explainer-text" id="explainer">
             {/* <h2>Why Upload?</h2> */}
             <h2>We’re building the largest open dataset for canine health in the world.</h2>
             <p>
