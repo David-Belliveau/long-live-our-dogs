@@ -56,9 +56,9 @@ function App() {
               The biggest barrier to better treatment for dogs is lack of data. Your dog's records will help researchers save lives:
             </p> */}
               <ul>
-                <li>🚫 Never shared for profit or marketing</li>
+                <li><b>🚫 Never shared for profit or marketing</b></li>
                 <li>🔒 All data anonymized (no names, no personal info)</li>
-                <li>🐾 <b>Used only to improve care for dogs</b></li>
+                <li>🐾 Used only to improve care for dogs</li>
               </ul>
             
           </div>
