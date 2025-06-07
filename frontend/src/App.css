@@ -77,6 +77,12 @@ a:hover {
 .nav-links a {
   margin-left: 1.5rem;
   font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a.active {
+  border-bottom: 2px solid var(--text-main);
 }
 
 .nav-links a.researcher-link {
@@ -87,6 +93,25 @@ a:hover {
 
 .nav-links a.researcher-link:hover {
   color: #666;
+}
+
+.upload-cta-button {
+  background-color: var(--nav-hover);
+  color: white !important;
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  border: 2px solid var(--nav-hover);
+  margin-left: 1rem;
+}
+
+.upload-cta-button:hover {
+  background-color: transparent;
+  color: var(--nav-hover) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(197, 75, 75, 0.2);
 }
 
 /* === CONTAINER (reusable) === */
@@ -811,7 +836,217 @@ a:hover {
   border: 1px solid #f5c6cb;
 }
 
-/* === FOOTER === */
+/* === ABOUT US PAGE === */
+.about-hero-bg {
+  background: linear-gradient(135deg, #f8faf9 0%, #e8f4f0 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.about-hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.about-hero-content .subtitle {
+  font-size: 1.3rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.mission-bg {
+  background-color: white;
+  padding: 4rem 2rem;
+}
+
+.mission-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.mission-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+}
+
+.mission-content p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.how-we-work-bg {
+  background-color: #f8faf9;
+  padding: 4rem 2rem;
+}
+
+.how-we-work-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.how-we-work-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--text-main);
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.work-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.work-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.work-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.work-item p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.impact-vision-bg {
+  background-color: white;
+  padding: 4rem 2rem;
+}
+
+.impact-vision-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.impact-vision-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--text-main);
+}
+
+.vision-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.vision-item {
+  background: #f8faf9;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.vision-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.vision-item p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.privacy-commitment-bg {
+  background-color: #f1f5f3;
+  padding: 4rem 2rem;
+}
+
+.privacy-commitment-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.privacy-commitment-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.privacy-commitment-content > p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+
+.commitment-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.commitment-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.commitment-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.commitment-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.commitment-item p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.about-cta-bg {
+  background-color: #e8f4f0;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.about-cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.about-cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-main);
+}
+
+.about-cta-content p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
 .footer {
   background-color: #f8f9fa;
   border-top: 1px solid var(--border-light);
@@ -843,7 +1078,8 @@ a:hover {
   
   .hero-text h1,
   .researchers-hero h1,
-  .pet-owners-hero h1 {
+  .pet-owners-hero h1,
+  .about-hero-content h1 {
     font-size: 2.2rem;
   }
   
@@ -852,7 +1088,10 @@ a:hover {
   .database-grid,
   .upload-types-grid,
   .privacy-grid,
-  .tips-grid {
+  .tips-grid,
+  .work-grid,
+  .vision-grid,
+  .commitment-grid {
     grid-template-columns: 1fr;
   }
   
@@ -870,9 +1109,17 @@ a:hover {
     margin-bottom: 1rem;
   }
   
-  .nav-links a {
-    margin-left: 1rem;
+  .nav-links {
+    gap: 1rem;
+  }
+  
+  .nav-link {
     font-size: 0.9rem;
+  }
+  
+  .upload-cta-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
   
   .navbar {
